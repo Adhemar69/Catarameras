@@ -1,0 +1,132 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #6B8E23;
+    flex-direction: column;
+}
+
+.container {
+    display: flex;
+    align-items: center; /* Alinea los elementos en una fila */
+    justify-content: flex-start; /* Asegura que los elementos estén alineados a la izquierda */
+}
+
+.sunflower {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: aparecer 2s ease-out;
+    margin-right: 20px; /* Espacio entre la flor y el cuadro de texto */
+}
+
+/* Tallo aún más largo */
+.stem {
+    width: 10px;
+    height: 220px; /* Antes 180px */
+    background-color: green;
+    position: relative;
+    z-index: 1;
+    animation: balanceo 2s ease-in-out infinite alternate;
+}
+
+.leaf {
+    width: 50px;
+    height: 25px;
+    background-color: #4caf50;
+    position: absolute;
+    top: 30%;
+    border-radius: 50% 50% 0 50%;
+}
+
+.leaf1 {
+    left: -45px;
+    transform: rotate(-30deg);
+    animation: hojaMovimiento 2s ease-in-out infinite alternate;
+}
+
+.leaf2 {
+    left: 5px;
+    top: 60%; /* Ajustamos para que no se solape */
+    transform: rotate(30deg) scaleX(-1);
+    animation: hojaMovimiento 2s ease-in-out infinite alternate-reverse;
+}
+
+/* Flor más arriba */
+.flower {
+    position: absolute;
+    top: -140px; /* Antes -110px */
+    z-index: 2;
+    width: 200px;
+    height: 200px;
+    animation: aparecer 1.5s ease-out;
+}
+
+/* Pétalos */
+.petal {
+    width: 100px;
+    height: 100px;
+    background-color: yellow;
+    border-radius: 50%;
+    position: absolute;
+    opacity: 0;
+    transform: scale(0.5);
+    animation: crecer 1.5s ease-out forwards;
+}
+
+.petal1 { top: 0; left: 50px; animation-delay: 0.2s; }
+.petal2 { top: 50px; left: 0; animation-delay: 0.4s; }
+.petal3 { top: 50px; left: 100px; animation-delay: 0.6s; }
+.petal4 { top: 100px; left: 50px; animation-delay: 0.8s; }
+
+/* Centro */
+.center {
+    width: 80px;
+    height: 80px;
+    background-color: orange;
+    border-radius: 50%;
+    position: absolute;
+    top: 60px;
+    left: 60px;
+    opacity: 0;
+    transform: scale(0.5);
+    animation: crecer 1.5s ease-out forwards;
+    animation-delay: 1s;
+}
+
+/* Animaciones */
+@keyframes aparecer {
+    from { transform: scale(0); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes crecer {
+    from { opacity: 0; transform: scale(0.5); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes balanceo {
+    from { transform: rotate(-2deg); }
+    to { transform: rotate(2deg); }
+}
+
+@keyframes hojaMovimiento {
+    from { transform: rotate(-30deg) translateY(0); }
+    to { transform: rotate(-30deg) translateY(-5px); }
+}
+
+/* Estilo para el cuadro grande */
+.text-box {
+    width: 300px; /* Ajusta el tamaño del cuadro */
+    height: 300px; /* Ajusta la altura como prefieras */
+    background-color: #F5F5DC;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    padding: 20px;
+    font-size: 1.2rem;
+    box-sizing: border-box;
+    overflow-y: auto; /* Permite hacer scroll si el contenido es demasiado largo */
+}
